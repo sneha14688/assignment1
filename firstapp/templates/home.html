@@ -1,0 +1,32 @@
+<!-- myapp/templates/home.html -->
+
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+     <!-- Bootstrap CSS -->
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% include 'navbar.html'%}
+    <h1>Latest News</h1>
+   
+    <ul>
+        {% for article in news_data %}
+            <!-- <li> 
+                <img src="{{ article.urlToImage }}" alt="{{ article.title }}" width="100">
+                <a href="{{ article.url }}">{{ article.title }}</a>
+            </li> -->
+            <li> 
+                <a href="{{ article.url }}">
+                    <img src="{{ article.urlToImage }}" alt="{{ article.title }}" width="100">
+                    {{ article.title }} </a>
+            </li>
+
+        {% endfor %}
+    </ul>
+</body>
+</html>

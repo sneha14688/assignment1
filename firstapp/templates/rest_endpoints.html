@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of rest framework endpoints</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% include 'navbar.html'%}
+    <h3>http://127.0.0.1:8000/blog_list/</h3><br>
+
+    <h3>http://127.0.0.1:8000/create_blog_api/</h3>
+        Test data for above link. CSRF token changes everytime. <p>{"csrfmiddlewaretoken": "BkdqEy7r2nOGVazE9HDcdxnWSyJzytdxZPTsrgywDHT72kKdUlDYSF52pPFqlzXe", "title": "My second Blog",
+            "content": "Global warming is the long-term warming of the planet's overall temperature."}</p><br>
+
+    <h3>http://127.0.0.1:8000/delete_blog_api/15</h3>
+    You can change the number 15 with any blog.id to delete that blog.<br>
+
+    <h3>http://127.0.0.1:8000/update_blog_api/16</h3>
+    You can change the number 16 with any blog.id to update that blog.<br>
+</body>
+</html>

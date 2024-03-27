@@ -1,0 +1,54 @@
+<!-- blog_detail.html -->
+
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Details</title>
+      <!-- Bootstrap CSS -->
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Add your CSS styles here */
+        .blog {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .blog h2 {
+            margin-top: 0;
+        }
+        .blog p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html'%}
+    
+    <h1>Blog Details</h1>
+    
+    {% for blog in blogs %}
+    <div class="blog">
+        <h3>{{ blog.id }}</h3>
+        <h2>{{ blog.title }}</h2>
+        <p>{{ blog.content }}</p>
+        <p>Author: {{ blog.author.username }}</p>
+        <p>Created at: {{ blog.created_at }}</p>
+        {% if blog.author.username == request.user.username %}
+            <p> User is logged in</p>
+            <form action="{% url 'delete_blog' blog.id %}"  method="post">
+                {% csrf_token %}
+        
+                <input type="hidden" name="blog_id" value="{{ blog.id }}">
+                <!-- <button type="submit">Delete Blog</button> -->
+                <button style="font-size:24px">Button <i class="fa fa-trash-o"></i></button>
+            </form>
+        {% endif %}
+    </div>
+    {% empty %}
+    <p>No blogs available.</p>
+    {% endfor %}
+</body>
+</html>
